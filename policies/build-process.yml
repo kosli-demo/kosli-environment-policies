@@ -1,0 +1,14 @@
+_schema: https://kosli.com/schemas/policy/environment/v1
+
+# https://docs.kosli.com/getting_started/policies/
+
+artifacts:
+  provenance:
+    required: true
+    exceptions:
+      - if: ${{ flow.tags.kind != "build" }}
+      
+  trail-compliance:
+    required: true
+    exceptions:
+      - if: ${{ flow.tags.kind != "build" }}
