@@ -7,7 +7,7 @@ artifacts:
     required: true
     exceptions:
       - if: ${{ flow.tags.kind != "build" }}
-      
+
   trail-compliance:
     required: true
     exceptions:

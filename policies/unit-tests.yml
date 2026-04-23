@@ -1,0 +1,9 @@
+_schema: https://kosli.com/schemas/policy/environment/v1
+
+# https://docs.kosli.com/getting_started/policies/
+
+artifacts:
+  attestations:
+    - name: unit-tests
+      if: ${{ flow.tags.unit_tests == "true" }}
+      type: junit

@@ -28,12 +28,14 @@ jobs:
           version: ${{ vars.KOSLI_CLI_VERSION }}
 
       - name: Create/Update Kosli Policies
-        run:
+        run: |
           kosli create policy build-process policies/build-process.yml
+          kosli create policy unit-tests policies/unit-tests.yml
 
       - name: Attach policies to environments
-        run:
+        run: |
           kosli attach-policy build-process --environment=staging
+          kosli attach-policy unit-tests --environment=staging
 
       # - name: Detach policies from environments
       #   run: |
