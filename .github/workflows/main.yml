@@ -27,16 +27,17 @@ jobs:
         with:
           version: ${{ vars.KOSLI_CLI_VERSION }}
 
+      - name: Detach policies from environments
+        run: |
+          kosli detach-policy build-process --environment=staging
+
       - name: Create/Update Kosli Policies
         run: |
-          kosli create policy build-process policies/build-process.yml
+          kosli create policy provenance policies/provenance.yml
           kosli create policy unit-tests policies/unit-tests.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy build-process --environment=staging
+          kosli attach-policy provenance --environment=staging
           kosli attach-policy unit-tests --environment=staging
 
-      # - name: Detach policies from environments
-      #   run: |
-      #     kosli detach-policy NAME --environment=staging
