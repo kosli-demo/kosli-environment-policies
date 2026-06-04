@@ -29,15 +29,18 @@ jobs:
 
       - name: Detach policies from environments
         run: |
-          kosli detach-policy build-process --environment=staging
+          kosli detach-policy build-process --environment=staging || true
+          kosli detach-policy build-and-unit-tests --environment=staging || true
 
       - name: Create/Update Kosli Policies
         run: |
           kosli create policy provenance policies/provenance.yml
           kosli create policy unit-tests policies/unit-tests.yml
+          kosli create policy trail-compliance policies/trail-compliance.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy provenance --environment=staging
-          kosli attach-policy unit-tests --environment=staging
+          kosli attach-policy provenance       --environment=staging
+          kosli attach-policy unit-tests       --environment=staging
+          kosli attach-policy trail-compliance --environment=staging
 
