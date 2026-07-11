@@ -3,9 +3,7 @@ _schema: https://kosli.com/schemas/policy/environment/v1
 # https://docs.kosli.com/getting_started/policies/
 
 artifacts:
-  provenance:
-    required: true
   attestations:
     - if: ${{ flow.tags.kind == "build" }}
       type: decision
-      for_control: SDLC-CTRL-0002
+      for_control: SDLC-CTRL-0004

@@ -37,12 +37,14 @@ jobs:
       - name: Create/Update Kosli Policies
         run: |
           kosli create policy provenance policies/provenance.yml
+          kosli create policy sbom policies/sbom.yml
           kosli create policy unit-tests policies/unit-tests.yml
           kosli create policy trail-compliance policies/trail-compliance.yml
 
       - name: Attach policies to environments
         run: |
           kosli attach-policy provenance       --environment=staging-k8s
+          kosli attach-policy sbom             --environment=staging-k8s
           kosli attach-policy unit-tests       --environment=staging-k8s
           kosli attach-policy trail-compliance --environment=staging-k8s
 
