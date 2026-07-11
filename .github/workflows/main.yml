@@ -43,8 +43,8 @@ jobs:
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy provenance       --environment=staging-k8s
-          kosli attach-policy sbom             --environment=staging-k8s
-          kosli attach-policy unit-tests       --environment=staging-k8s
-          kosli attach-policy trail-compliance --environment=staging-k8s
+          kosli attach-policy provenance       --environment=staging-k8s,staging-ecs
+          kosli attach-policy sbom             --environment=staging-k8s,staging-ecs
+          kosli attach-policy unit-tests       --environment=staging-k8s,staging-ecs
+          kosli attach-policy trail-compliance --environment=staging-k8s,staging-ecs
 
